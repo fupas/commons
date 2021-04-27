@@ -27,3 +27,12 @@ func GetInt(env string, def int64) int64 {
 	}
 	return def
 }
+
+// Assert verifies that the environment variable 'env' is defined and returns a non-empty value.
+func Assert(env string) bool {
+	e, ok := os.LookupEnv(env)
+	if !ok || e == "" {
+		return false
+	}
+	return true
+}
